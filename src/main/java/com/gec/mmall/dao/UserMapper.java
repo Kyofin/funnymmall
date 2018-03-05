@@ -1,6 +1,7 @@
 package com.gec.mmall.dao;
 
 import com.gec.mmall.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,12 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int checkUserName(String username);
+
+    int checkEmail(String email);
+
+
+    User selectLogin(@Param("username") String username,@Param("password") String password);
+
 }

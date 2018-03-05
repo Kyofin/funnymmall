@@ -1,6 +1,12 @@
 package com.gec.mmall.common;
 
-public class ServerResponse<T> {
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import java.io.Serializable;
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//保证序列化json的时候，如果值是NULL的key忽略
+public class ServerResponse<T> implements Serializable{
 	private int code;
 	private String msg;
 	private T data;
@@ -29,7 +35,8 @@ public class ServerResponse<T> {
 	}
 
 
-
+	@JsonIgnore
+	//使之不在json序列化中
 	public boolean isSuccess()
 	{
 		return code == ResponseCode.SUCCESS.getCode();
@@ -63,5 +70,17 @@ public class ServerResponse<T> {
 
 	public static <T> ServerResponse<T> createByErrorCodeMessage(int errorCode,String errorMessage){
 		return new ServerResponse<T>(errorCode,errorMessage);
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public T getData() {
+		return data;
 	}
 }
