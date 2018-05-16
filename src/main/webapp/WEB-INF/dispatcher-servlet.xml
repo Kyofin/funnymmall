@@ -20,7 +20,7 @@
                     </list>
                 </property>
             </bean>
-            <!--配置json转换器-->
+            <!--配置json转换器(返回响应报文的类型)-->
             <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>

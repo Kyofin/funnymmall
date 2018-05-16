@@ -1,7 +1,11 @@
 package com.gec.mmall.pojo;
 
-import java.util.Date;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import java.util.Date;
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//保证序列化json的时候，如果值是NULL的key忽略
 public class User {
     private Integer id;
 
@@ -104,6 +108,7 @@ public class User {
         this.role = role;
     }
 
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -112,11 +117,28 @@ public class User {
         this.createTime = createTime;
     }
 
+
     public Date getUpdateTime() {
         return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", question='" + question + '\'' +
+                ", answer='" + answer + '\'' +
+                ", role=" + role +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

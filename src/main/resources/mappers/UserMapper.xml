@@ -138,6 +138,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.gec.mmall.pojo.User" >
     update mmall_user
     set username = #{username,jdbcType=VARCHAR},
@@ -150,6 +151,11 @@
     create_time = #{createTime,jdbcType=TIMESTAMP},
     update_time = now()
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updatePasswordByUsername" parameterType="map">
+    UPDATE mmall_user
+    SET password=#{md5Password},update_time=now()
+    WHERE username=#{username}
   </update>
 
   <select id="checkUserName" resultType="int" parameterType="string">
@@ -165,6 +171,34 @@
   <select id="checkEmail" resultType="int" parameterType="string">
     SELECT count(1) FROM  mmall_user WHERE
     email = #{email}
+  </select>
+
+  <select id="selectQuestionByUsername" resultType="string">
+    SELECT question
+    FROM mmall_user
+    WHERE username=#{username}
+  </select>
+
+  <select id="checkAnswer" resultType="int" parameterType="map">
+    SELECT count(1)
+    FROM mmall_user
+    WHERE username=#{username} AND
+    question=#{question} AND
+    answer=#{answer}
+  </select>
+
+  <select id="checkPassword" resultType="int" parameterType="map">
+    SELECT count(1)
+    FROM mmall_user
+    WHERE id = #{userId} AND
+    password=#{passwordOld}
+  </select>
+
+  <select id="checkEmailByUserId" resultType="int" parameterType="map">
+    SELECT count(1)
+    FROM mmall_user
+    WHERE email=#{email}
+    AND id!=#{userId}
   </select>
 
 </mapper>

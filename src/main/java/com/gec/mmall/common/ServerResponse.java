@@ -7,29 +7,29 @@ import java.io.Serializable;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 //保证序列化json的时候，如果值是NULL的key忽略
 public class ServerResponse<T> implements Serializable{
-	private int code;
+	private int status;
 	private String msg;
 	private T data;
 
-	private ServerResponse(int code)
+	private ServerResponse(int status)
 	{
-		this.code = code;
+		this.status = status;
 	}
 
-	private ServerResponse(int code,String msg)
+	private ServerResponse(int status, String msg)
 	{
-		this.code = code;
+		this.status = status;
 		this.msg = msg;
 	}
 
-	public ServerResponse(int code, T data) {
-		this.code = code;
+	public ServerResponse(int status, T data) {
+		this.status = status;
 		this.data = data;
 	}
 
-	private ServerResponse(int code,String msg,T data)
+	private ServerResponse(int status, String msg, T data)
 	{
-		this.code = code;
+		this.status = status;
 		this.msg = msg;
 		this.data = data;
 	}
@@ -39,7 +39,7 @@ public class ServerResponse<T> implements Serializable{
 	//使之不在json序列化中
 	public boolean isSuccess()
 	{
-		return code == ResponseCode.SUCCESS.getCode();
+		return status == ResponseCode.SUCCESS.getCode();
 	}
 
 	public static <T> ServerResponse<T> createBySuccess(){
@@ -72,8 +72,8 @@ public class ServerResponse<T> implements Serializable{
 		return new ServerResponse<T>(errorCode,errorMessage);
 	}
 
-	public int getCode() {
-		return code;
+	public int getStatus() {
+		return status;
 	}
 
 	public String getMsg() {

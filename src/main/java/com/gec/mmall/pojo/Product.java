@@ -16,11 +16,11 @@ public class Product {
 
     private String subImages;
 
-    private String detail;
+    private String detail;//富文本详情
 
     private BigDecimal price;
 
-    private Integer stock;
+    private Integer stock;//库存
 
     private Integer status;
 
