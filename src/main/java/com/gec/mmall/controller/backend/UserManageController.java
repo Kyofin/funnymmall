@@ -32,7 +32,7 @@ public class UserManageController {
 			if (user.getRole() == Const.Role.ROLE_ADMIN){
 				//说明登录的是管理员,将用户保存到session
 				session.setAttribute(Const.CURRENT_USER,user);
-				LOGGER.info(user.toString());;
+				LOGGER.info("登录用户：{}",user.toString());;
 				return response;
 			}else {
 				return ServerResponse.createByErrorMessage("不是管理员，无法登录");

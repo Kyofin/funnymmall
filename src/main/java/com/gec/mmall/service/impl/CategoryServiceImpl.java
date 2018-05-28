@@ -67,7 +67,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	 */
 	@Override
 	public ServerResponse<List<Category>> getChildrenParallelCategory(Integer categoryId) {
-		List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId); //todo 区分品类状态
+		List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
 		if (CollectionUtils.isEmpty(categoryList)){
 			LOGGER.info("未找到当前分类的子分类");
 		}
@@ -80,7 +80,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	 * @return
 	 */
 	@Override
-	public ServerResponse selectCategoryAndChildrenById(Integer categoryId) {
+	public ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId) {
 		Set<Category> categorySet = Sets.newHashSet();
 		//调用递归算法，算出所有子节点
 		findChildCategory(categorySet,categoryId);
@@ -99,13 +99,13 @@ public class CategoryServiceImpl implements ICategoryService {
 	 */
 	private Set<Category> findChildCategory(Set<Category> categorySet,Integer categoryId){
 		//查找自己，添加自己
-		Category category = categoryMapper.selectByPrimaryKey(categoryId); //todo 区分品类状态
+		Category category = categoryMapper.selectByPrimaryKey(categoryId);
 		if (category != null){
 			categorySet.add(category);
 		}
 		//查找子节点，递归算法一定要有一个退出条件
 		//0->10000->100000
-		List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);//todo 区分品类状态
+		List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
 		for (Category categoryItem : categoryList) {
 			findChildCategory(categorySet,categoryItem.getId());
 		}

@@ -26,9 +26,8 @@ public class OrderItem {
 
     private Date updateTime;
 
-    public OrderItem(Integer id, Integer userId, Long orderNo, Integer productId, String productName, String productImage, BigDecimal currentUnitPrice, Integer quantity, BigDecimal totalPrice, Date createTime, Date updateTime) {
+    public OrderItem(Integer id, Long orderNo, Integer productId, String productName, String productImage, BigDecimal currentUnitPrice, Integer quantity, BigDecimal totalPrice, Date createTime, Date updateTime, Integer userId) {
         this.id = id;
-        this.userId = userId;
         this.orderNo = orderNo;
         this.productId = productId;
         this.productName = productName;
@@ -38,6 +37,8 @@ public class OrderItem {
         this.totalPrice = totalPrice;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.userId = userId;
+
     }
 
     public OrderItem() {

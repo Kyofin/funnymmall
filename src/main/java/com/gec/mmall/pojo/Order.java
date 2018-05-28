@@ -39,7 +39,7 @@ public class Order {
         this.shippingId = shippingId;
         this.payment = payment;
         this.paymentType = paymentType;
-        this.postage = postage;
+        this.postage = postage;//运费
         this.status = status;
         this.paymentTime = paymentTime;
         this.sendTime = sendTime;

@@ -25,12 +25,6 @@ public class DateTimeUtil {
 		return dateTime.toDate();
 	}
 
-	public static Date strToDate(String dateTimeStr){
-		DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(STANDARD_FORMAT);
-		DateTime dateTime = dateTimeFormatter.parseDateTime(dateTimeStr);
-		return dateTime.toDate();
-	}
-
 	/**
 	 * 时间转字符串
 	 * @param date
@@ -44,6 +38,14 @@ public class DateTimeUtil {
 		DateTime dateTime = new DateTime(date);
 		return dateTime.toString(formatStr);
 	}
+
+	public static Date strToDate(String dateTimeStr){
+		DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(STANDARD_FORMAT);
+		DateTime dateTime = dateTimeFormatter.parseDateTime(dateTimeStr);
+		return dateTime.toDate();
+	}
+
+
 
 	public static String dateToStr(Date date){
 		if (date == null){
