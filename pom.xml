@@ -202,7 +202,7 @@
     </dependency>
 
 
-    <!-- alipay -->
+    <!-- alipay用的工具包 -->
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -247,7 +247,9 @@
   </dependencies>
 
 
+  <!--打包相关信息-->
   <build>
+    <!--war包名称-->
     <finalName>mmall</finalName>
     <plugins>
       <plugin>
@@ -269,6 +271,7 @@
           <target>1.7</target>
           <encoding>UTF-8</encoding>
           <compilerArguments>
+            <!--打包时要同时编译这个文件下的jar包，否则会报错class not found-->
             <extdirs>${project.basedir}/src/main/webapp/WEB-INF/lib</extdirs>
           </compilerArguments>
         </configuration>
