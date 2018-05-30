@@ -129,7 +129,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	/**
-	 * 校验找回密码的问题和答案
+	 * 校验找回密码的问题和答案，成功则把权限token放到缓存中
 	 * @param username
 	 * @param question
 	 * @param answer
@@ -150,7 +150,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	/**
-	 * 找回密码（通过权限token重置用户密码）
+	 * 通过缓存中取出对应权限token，重置用户密码
 	 * @param username
 	 * @param passwordNew
 	 * @param forgetToken

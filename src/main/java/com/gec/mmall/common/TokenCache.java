@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 更改密码时需要的token放缓存中
+ */
 public class TokenCache {
 
 	private static Logger logger = LoggerFactory.getLogger(TokenCache.class);
