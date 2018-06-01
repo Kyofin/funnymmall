@@ -1,7 +1,6 @@
 package com.gec.mmall.vo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 public class OrderVO {
@@ -30,13 +29,14 @@ public class OrderVO {
 
 	private String createTime;
 
-	private List<OrderItemVO> orderItemVOList;//订单的明细
+	private List<OrderItemVO> orderItemVoList;//订单的明细
 
 	private String imageHost;
 	private Integer shippingId;
 	private String receiverName;
 
-	private ShippingVO shippingVO;
+	private ShippingVO shippingVo;
+
 
 	public Long getOrderNo() {
 		return orderNo;
@@ -134,12 +134,12 @@ public class OrderVO {
 		this.createTime = createTime;
 	}
 
-	public List<OrderItemVO> getOrderItemVOList() {
-		return orderItemVOList;
+	public List<OrderItemVO> getOrderItemVoList() {
+		return orderItemVoList;
 	}
 
-	public void setOrderItemVOList(List<OrderItemVO> orderItemVOList) {
-		this.orderItemVOList = orderItemVOList;
+	public void setOrderItemVoList(List<OrderItemVO> orderItemVoList) {
+		this.orderItemVoList = orderItemVoList;
 	}
 
 	public String getImageHost() {
@@ -166,11 +166,11 @@ public class OrderVO {
 		this.receiverName = receiverName;
 	}
 
-	public ShippingVO getShippingVO() {
-		return shippingVO;
+	public ShippingVO getShippingVo() {
+		return shippingVo;
 	}
 
-	public void setShippingVO(ShippingVO shippingVO) {
-		this.shippingVO = shippingVO;
+	public void setShippingVo(ShippingVO shippingVo) {
+		this.shippingVo = shippingVo;
 	}
 }

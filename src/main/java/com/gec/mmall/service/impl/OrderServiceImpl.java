@@ -141,7 +141,7 @@ public class OrderServiceImpl implements IOrderService {
 		Shipping shipping = shippingMapper.selectByPrimaryKey(order.getShippingId());
 		if (shipping != null) {
 			orderVO.setReceiverName(shipping.getReceiverName());
-			orderVO.setShippingVO(assembleShippingVO(shipping));
+			orderVO.setShippingVo(assembleShippingVO(shipping));
 		}
 
 		orderVO.setPaymentTime(DateTimeUtil.dateToStr(order.getPaymentTime()));
@@ -158,7 +158,7 @@ public class OrderServiceImpl implements IOrderService {
 			OrderItemVO orderItemVO = assembleOrderItemVO(orderItem);
 			orderItemVOList.add(orderItemVO);
 		}
-		orderVO.setOrderItemVOList(orderItemVOList);
+		orderVO.setOrderItemVoList(orderItemVOList);
 		return orderVO;
 	}
 
