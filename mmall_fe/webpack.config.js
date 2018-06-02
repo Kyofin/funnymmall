@@ -43,7 +43,7 @@ var config        = {
     },
     output   : {
         path      : __dirname + '/dist/',
-        publicPath: 'dev' === WEBPACK_ENV ? '/dist/' : '//s.imitationtmall.xin/mmall-fe/dist/',
+        publicPath: '/dist/',
         filename  : 'js/[name].js'
     },
     externals: {
