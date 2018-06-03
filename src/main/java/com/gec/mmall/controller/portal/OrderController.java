@@ -6,7 +6,6 @@ import com.alipay.demo.trade.config.Configs;
 import com.gec.mmall.common.Const;
 import com.gec.mmall.common.ResponseCode;
 import com.gec.mmall.common.ServerResponse;
-import com.gec.mmall.dao.OrderItemMapper;
 import com.gec.mmall.pojo.User;
 import com.gec.mmall.service.IOrderService;
 import com.google.common.collect.Maps;
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/order")
@@ -189,13 +187,13 @@ public class OrderController {
 
 	@RequestMapping("query_order_pay_status.do")
 	@ResponseBody
-	public ServerResponse<Boolean> queryOrderPayStatus(HttpSession session, Long orderNo){
+	public ServerResponse<Boolean> queryOrderPayStatus(HttpSession session, Long orderNumber){
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
 			return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
 		}
 
-		ServerResponse serverResponse = iOrderService.queryOrderPayStatus(user.getId(),orderNo);
+		ServerResponse serverResponse = iOrderService.queryOrderPayStatus(user.getId(), orderNumber);
 		if (serverResponse.isSuccess()) {
 			return ServerResponse.createBySuccess(true);
 		}
