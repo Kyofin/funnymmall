@@ -22,7 +22,7 @@ var _user = {
     // 检查用户名
     checkUsername:function(username, resolve, reject){
         _mm.request({
-            url     : _mm.getServerUrl('/user/login.do'),
+            url     : _mm.getServerUrl('/user/check_valid.do'),
             data    : {
                 type    :'username',
                 str     :username
