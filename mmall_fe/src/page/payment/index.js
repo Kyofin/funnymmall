@@ -41,13 +41,14 @@ var page = {
         this.paymentTimer = window.setInterval(function () {
             _payment.getPaymentStatus(_this.orderNumber,function (res) {
                 if(res == true){
+                    console.log("订单已支付")
                     window.location.href
                         = './result.html?type=payment&orderNumber=' + _this.data.orderNumber;
                 }
             },function (errMsg) {
 
             })
-        })
+        },3000)
     }
 };
 $(function () {
