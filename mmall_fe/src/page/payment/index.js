@@ -39,7 +39,7 @@ var page = {
     listenOrderStatus:function () {
         var _this = this;
         this.paymentTimer = window.setInterval(function () {
-            _payment.getPaymentStatus(_this.orderNumber,function (res) {
+            _payment.getPaymentStatus(_this.data.orderNumber,function (res) {
                 if(res == true){
                     console.log("订单已支付")
                     window.location.href
