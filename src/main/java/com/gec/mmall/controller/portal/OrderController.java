@@ -187,13 +187,13 @@ public class OrderController {
 
 	@RequestMapping("query_order_pay_status.do")
 	@ResponseBody
-	public ServerResponse<Boolean> queryOrderPayStatus(HttpSession session, Long orderNumber){
+	public ServerResponse<Boolean> queryOrderPayStatus(HttpSession session, Long orderNo){
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
 			return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
 		}
 
-		ServerResponse serverResponse = iOrderService.queryOrderPayStatus(user.getId(), orderNumber);
+		ServerResponse serverResponse = iOrderService.queryOrderPayStatus(user.getId(), orderNo);
 		if (serverResponse.isSuccess()) {
 			return ServerResponse.createBySuccess(true);
 		}
